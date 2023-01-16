@@ -12,16 +12,20 @@ end dflip_flop;
 
 architecture beh of dflip_flop is 
 
--- definisanje signala i komponenata
+signal q_s: std_logic := '0';
+signal qn_s: std_logic := '1';
 
 begin
 
 d_ff : process (clk)
 	begin
 		if (clk'event and clk='1') then
-			q <= D;
-			q_n <= not D;
+			q_s <= D;
+			qn_s <= not D;
 		end if;
 	end process;
+
+q <= q_s;
+q_n <= qn_s;
 
 end beh;

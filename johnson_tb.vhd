@@ -15,8 +15,9 @@ Port (
 );
 end component;
 
-signal Q_s, Q_n_s: std_logic_vector (2 downto 0);
-signal clk_s : std_logic;
+signal Q_s: std_logic_vector (2 downto 0);
+signal Q_n_s: std_logic_vector (2 downto 0) := "001";
+signal clk_s : std_logic := '1';
 
 begin
 
@@ -27,8 +28,9 @@ uut : johnson Port map ( Q => Q_s,
 
 clk_gen : process
 		begin
-			clk_s <= '0', '1' after 1 us;
+			clk_s <= '1', '0' after 2 us;
 			wait for 4 us;
 		end process;
 
 end;
+
