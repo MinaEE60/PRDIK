@@ -18,7 +18,7 @@ signal qn_s : std_logic := '1';
 
 begin
 
-jkff : process (clk)
+jkff : process (clk, J, K)
 	begin
 		if (clk'event and clk='1') then
 			if ( J = '0' and K = '0') then
@@ -31,8 +31,8 @@ jkff : process (clk)
 				q_s <= '1';
 				qn_s <= '0';
 			else
-				q_s <= qn_s;
-				qn_s <= q_s;
+				q_s <= not q_s;
+				qn_s <= not qn_s;
 			end if;
 		end if;
 	end process;
